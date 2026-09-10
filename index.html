@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NCERT → NEET</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #172033;
+    }
+
+    header {
+      background: #172033;
+      color: white;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .box {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      flex: 1;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .ncert {
+      border-left: 5px solid #c49a45;
+    }
+
+    .question {
+      border-left: 5px solid #d95c4f;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 10px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .option:hover {
+      background: #f0f2f5;
+    }
+
+    button {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 10px;
+      background: #172033;
+      color: white;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    @media(max-width: 700px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>NCERT → NEET</h1>
+  <p>Every important NCERT line can become a question.</p>
+</header>
+
+<div class="container">
+
+  <div class="box ncert">
+    <h2>📖 NCERT Line</h2>
+
+    <p>
+      The cell membrane is selectively permeable and controls
+      the movement of substances into and out of the cell.
+    </p>
+
+    <hr>
+
+    <h3>⭐ Important concept</h3>
+    <p><b>Selective permeability</b></p>
+  </div>
+
+  <div class="box question">
+    <h2>🎯 Probable NEET Question</h2>
+
+    <h3>
+      Which property of the cell membrane allows it to control
+      the movement of substances?
+    </h3>
+
+    <button class="option" onclick="checkAnswer(false)">
+      A. Complete permeability
+    </button>
+
+    <button class="option" onclick="checkAnswer(true)">
+      B. Selective permeability
+    </button>
+
+    <button class="option" onclick="checkAnswer(false)">
+      C. Complete impermeability
+    </button>
+
+    <button class="option" onclick="checkAnswer(false)">
+      D. Permanent rigidity
+    </button>
+
+    <div id="result"></div>
+  </div>
+
+</div>
+
+<script>
+function checkAnswer(correct) {
+
+  const result = document.getElementById("result");
+
+  if (correct) {
+    result.innerHTML = "✅ Correct! This answer comes directly from the NCERT concept.";
+    result.style.color = "green";
+  } else {
+    result.innerHTML = "❌ Incorrect. Read the NCERT line again.";
+    result.style.color = "red";
+  }
+}
+</script>
+
+</body>
+</html>
