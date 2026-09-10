@@ -164,6 +164,136 @@
 </script>
 
 </body>
+</html>      padding: 25px;
+      flex: 1;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .ncert {
+      border-left: 5px solid #c49a45;
+    }
+
+    .question {
+      border-left: 5px solid #d95c4f;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 10px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .option:hover {
+      background: #f0f2f5;
+    }
+
+    .correct {
+      background: #d9f7df !important;
+      border-color: green;
+    }
+
+    .wrong {
+      background: #ffe0e0 !important;
+      border-color: red;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>NCERT → NEET</h1>
+  <p>Every important NCERT line can become a question.</p>
+</header>
+
+<div class="container">
+
+  <div class="box ncert">
+    <h2>📖 NCERT Line</h2>
+
+    <p>
+      The cell membrane is selectively permeable and controls
+      the movement of substances into and out of the cell.
+    </p>
+
+    <hr>
+
+    <h3>⭐ Important Concept</h3>
+    <p><b>Selective permeability</b></p>
+  </div>
+
+  <div class="box question">
+    <h2>🎯 Probable NEET Question</h2>
+
+    <h3>
+      Which property of the cell membrane allows it to control
+      the movement of substances?
+    </h3>
+
+    <button class="option" onclick="checkAnswer(this, false)">
+      A. Rigidity
+    </button>
+
+    <button class="option" onclick="checkAnswer(this, true)">
+      B. Selective permeability
+    </button>
+
+    <button class="option" onclick="checkAnswer(this, false)">
+      C. Thickness
+    </button>
+
+    <button class="option" onclick="checkAnswer(this, false)">
+      D. Cell wall formation
+    </button>
+
+    <div id="result"></div>
+  </div>
+
+</div>
+
+<script>
+  function checkAnswer(button, correct) {
+
+    let options = document.querySelectorAll(".option");
+
+    options.forEach(function(option) {
+      option.disabled = true;
+    });
+
+    if (correct) {
+      button.classList.add("correct");
+      document.getElementById("result").innerHTML =
+        "✅ Correct! Great job.";
+      document.getElementById("result").style.color = "green";
+    } else {
+      button.classList.add("wrong");
+      document.getElementById("result").innerHTML =
+        "❌ Incorrect. The correct answer is Selective permeability.";
+      document.getElementById("result").style.color = "red";
+    }
+  }
+</script>
+
+</body>
 </html>      cursor: pointer;
       font-size: 16px;
     }
