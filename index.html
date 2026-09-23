@@ -1,953 +1,543 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Living World → NEET</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f7fa;
-  color: #172033;
-}
+  <title>NCERT → NEET | The Living World</title>
 
-header {
-  background: #172033;
-  color: white;
-  text-align: center;
-  padding: 25px 15px;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-header h1 {
-  margin: 0;
-  font-size: 30px;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+    }
 
-header p {
-  margin-bottom: 0;
-}
+    header {
+      background: #172033;
+      color: white;
+      padding: 18px 20px;
+      text-align: center;
+    }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
-}
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
 
-.topic {
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
+    header p {
+      margin: 7px 0 0;
+      color: #d9e1ee;
+    }
 
-.topic h2 {
-  margin-top: 0;
-}
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
 
-.grid {
-  display: flex;
-  gap: 20px;
-}
+    .chapter {
+      background: white;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
 
-.box {
-  flex: 1;
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
+    .chapter h2 {
+      margin-top: 0;
+    }
 
-.ncert {
-  border-left: 5px solid #c49a45;
-}
+    .video {
+      background: #101827;
+      color: white;
+      border-radius: 16px;
+      min-height: 420px;
+      padding: 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-.question {
-  border-left: 5px solid #d95c4f;
-}
+    .video::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(73, 157, 255, 0.12);
+      top: -120px;
+      right: -80px;
+    }
 
-.option {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  background: white;
-  border-radius: 10px;
-  text-align: left;
-  font-size: 16px;
-  cursor: pointer;
-}
+    .video::after {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: rgba(255, 193, 7, 0.08);
+      bottom: -100px;
+      left: -70px;
+    }
 
-.option:hover {
-  background: #f0f2f5;
-}
+    .scene-number {
+      font-size: 14px;
+      color: #8ec5ff;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 2;
+    }
 
-.correct {
-  background: #d9f7df !important;
-  border-color: green;
-}
+    .scene-title {
+      font-size: 34px;
+      margin: 10px 0 20px;
+      position: relative;
+      z-index: 2;
+    }
 
-.wrong {
-  background: #ffe0e0 !important;
-  border-color: red;
-}
+    .scene-text {
+      max-width: 800px;
+      margin: auto;
+      font-size: 19px;
+      line-height: 1.7;
+      color: #e8edf5;
+      position: relative;
+      z-index: 2;
+    }
 
-#result {
-  font-weight: bold;
-  font-size: 18px;
-  margin-top: 15px;
-}
+    .keyword {
+      display: inline-block;
+      background: #243550;
+      padding: 8px 14px;
+      border-radius: 20px;
+      margin: 5px;
+      color: #9fd0ff;
+      font-weight: bold;
+      position: relative;
+      z-index: 2;
+    }
 
-.next {
-  background: #172033;
-  color: white;
-  border: none;
-  padding: 13px 22px;
-  border-radius: 10px;
-  margin-top: 15px;
-  cursor: pointer;
-  font-size: 16px;
-}
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
 
-.score {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
+    button {
+      border: none;
+      padding: 12px 20px;
+      border-radius: 9px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+    }
 
-@media(max-width:700px) {
-  .grid {
-    flex-direction: column;
-  }
-}
-</style>
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    button.secondary {
+      background: #475569;
+    }
+
+    .progress {
+      height: 7px;
+      background: #dbe3ee;
+      border-radius: 10px;
+      margin-top: 18px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #2563eb;
+      transition: width 0.3s;
+    }
+
+    .mcq {
+      margin-top: 20px;
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin: 9px 0;
+      background: #f1f5f9;
+      color: #172033;
+    }
+
+    .option:hover {
+      background: #e2e8f0;
+    }
+
+    #answer {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #64748b;
+    }
+
+    @media (max-width: 600px) {
+      .video {
+        min-height: 480px;
+        padding: 22px;
+      }
+
+      .scene-title {
+        font-size: 27px;
+      }
+
+      .scene-text {
+        font-size: 17px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <h1>🌱 The Living World</h1>
-  <p>NCERT → NEET Preparation</p>
+  <h1>NCERT → NEET</h1>
+  <p>Class 11 Biology • Chapter 1 • The Living World</p>
 </header>
 
 <div class="container">
 
-  <div class="topic">
-    <h2>📚 Chapter Topics</h2>
+  <div class="chapter">
+    <h2>🎬 The Living World — Video Lesson</h2>
     <p>
-      Biodiversity • Taxonomy • Species • Binomial Nomenclature •
-      Taxonomic Hierarchy • Taxonomic Aids
+      Learn the important concepts of Chapter 1 and revise them for NEET.
     </p>
-  </div>
 
-  <div class="score">
-    Question <span id="number">1</span> / 15
-    &nbsp; | &nbsp;
-    Score: <span id="score">0</span>
-  </div>
+    <div class="video">
 
-  <div class="grid">
+      <div class="scene-number" id="sceneNumber">
+        Scene 1 / 10
+      </div>
 
-    <div class="box ncert">
-      <h2>📖 NCERT Key Point</h2>
+      <h2 class="scene-title" id="sceneTitle">
+        The Living World
+      </h2>
 
-      <p id="ncert">
-        The living world shows enormous diversity of organisms.
-        Biodiversity refers to the variety of living organisms.
+      <p class="scene-text" id="sceneText">
+        Welcome to Class 11 Biology. In this chapter we begin our journey
+        into the fascinating world of living organisms.
       </p>
 
-      <hr>
+      <div id="keywords"></div>
 
-      <h3>⭐ Important Concept</h3>
-      <p id="concept">Biodiversity</p>
     </div>
 
-    <div class="box question">
-
-      <h2>🎯 NEET Practice</h2>
-
-      <h3 id="question">
-        What does biodiversity refer to?
-      </h3>
-
-      <div id="options"></div>
-
-      <div id="result"></div>
-
-      <button class="next" onclick="nextQuestion()">
-        Next Question →
+    <div class="controls">
+      <button class="secondary" onclick="previousScene()">
+        ◀ Previous
       </button>
 
+      <button onclick="playVideo()" id="playButton">
+        ▶ Play
+      </button>
+
+      <button onclick="nextScene()">
+        Next ▶
+      </button>
+    </div>
+
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
     </div>
 
   </div>
-</div>
 
-<script>
 
-const questions = [
+  <div class="mcq">
 
-{
-ncert: "The living world shows enormous diversity of organisms.",
-concept: "Biodiversity",
-q: "What does biodiversity mainly refer to?",
-options: [
-"Variety of living organisms",
-"Only the number of animals",
-"Only the number of plants",
-"Size of organisms"
-],
-answer: 0
-},
-
-{
-ncert: "Taxonomy is the science of identification, nomenclature and classification of organisms.",
-concept: "Taxonomy",
-q: "Which of the following is included in taxonomy?",
-options: [
-"Identification and classification",
-"Only reproduction",
-"Only respiration",
-"Only evolution"
-],
-answer: 0
-},
-
-{
-ncert: "A species is a group of organisms with fundamental similarities.",
-concept: "Species",
-q: "Which is the basic unit of classification?",
-options: [
-"Kingdom",
-"Species",
-"Family",
-"Order"
-],
-answer: 1
-},
-
-{
-ncert: "Each species has its own distinct characteristics.",
-concept: "Species",
-q: "A group of organisms having fundamental similarities is called a:",
-options: [
-"Species",
-"Kingdom",
-"Order",
-"Class"
-],
-answer: 0
-},
-
-{
-ncert: "Binomial nomenclature gives each organism a scientific name consisting of two words.",
-concept: "Binomial Nomenclature",
-q: "How many words are generally present in a scientific name under binomial nomenclature?",
-options: [
-"One",
-"Two",
-"Three",
-"Four"
-],
-answer: 1
-},
-
-{
-ncert: "The first word of a scientific name represents the genus.",
-concept: "Genus",
-q: "In a binomial scientific name, the first word represents the:",
-options: [
-"Species",
-"Family",
-"Genus",
-"Order"
-],
-answer: 2
-},
-
-{
-ncert: "The second word of a scientific name represents the specific epithet.",
-concept: "Specific Epithet",
-q: "The second word in a binomial name is called the:",
-options: [
-"Genus",
-"Specific epithet",
-"Family",
-"Kingdom"
-],
-answer: 1
-},
-
-{
-ncert: "Scientific names are generally written in Latin and are universally accepted.",
-concept: "Scientific Naming",
-q: "Why are scientific names useful?",
-options: [
-"They provide a universal system of naming",
-"They are different in every country",
-"They describe only appearance",
-"They are used only for animals"
-],
-answer: 0
-},
-
-{
-ncert: "The hierarchy of classification includes species, genus, family, order, class, phylum or division, and kingdom.",
-concept: "Taxonomic Hierarchy",
-q: "Which is the correct sequence from lower to higher category?",
-options: [
-"Species → Genus → Family",
-"Family → Species → Genus",
-"Kingdom → Species → Genus",
-"Genus → Species → Family"
-],
-answer: 0
-},
-
-{
-ncert: "Genus comprises a group of related species.",
-concept: "Genus",
-q: "A genus generally contains:",
-options: [
-"Related species",
-"Related kingdoms",
-"Only one organism",
-"Only families"
-],
-answer: 0
-},
-
-{
-ncert: "Family is formed by grouping related genera.",
-concept: "Family",
-q: "A family is a group of related:",
-options: [
-"Species only",
-"Genera",
-"Kingdoms",
-"Classes"
-],
-answer: 1
-},
-
-{
-ncert: "Order is an assemblage of families which exhibit a few similar characteristics.",
-concept: "Order",
-q: "An order is generally formed by grouping related:",
-options: [
-"Families",
-"Species",
-"Kingdoms",
-"Individuals"
-],
-answer: 0
-},
-
-{
-ncert: "Herbarium is a storehouse of collected, dried and preserved plant specimens.",
-concept: "Herbarium",
-q: "A herbarium mainly contains:",
-options: [
-"Preserved plant specimens",
-"Live animals",
-"Only seeds",
-"Only microorganisms"
-],
-answer: 0
-},
-
-{
-ncert: "Museums have collections of preserved plant and animal specimens for study.",
-concept: "Museum",
-q: "Biological museums are useful mainly for:",
-options: [
-"Study of preserved specimens",
-"Growing crops",
-"Cooking food",
-"Producing medicines"
-],
-answer: 0
-},
-
-{
-ncert: "Botanical gardens maintain living collections of plants for reference and study.",
-concept: "Botanical Garden",
-q: "What is maintained in a botanical garden?",
-options: [
-"Living plant collections",
-"Only dead specimens",
-"Only animals",
-"Only fossils"
-],
-answer: 0
-}
-
-];
-
-let current = 0;
-let score = 0;
-let answered = false;
-
-function loadQuestion() {
-
-  answered = false;
-
-  let q = questions[current];
-
-  document.getElementById("number").innerText = current + 1;
-  document.getElementById("ncert").innerText = q.ncert;
-  document.getElementById("concept").innerText = q.concept;
-  document.getElementById("question").innerText = q.q;
-
-  document.getElementById("result").innerText = "";
-
-  let optionsBox = document.getElementById("options");
-  optionsBox.innerHTML = "";
-
-  q.options.forEach((option, index) => {
-
-    let button = document.createElement("button");
-
-    button.className = "option";
-    button.innerText = option;
-
-    button.onclick = function() {
-      checkAnswer(button, index);
-    };
-
-    optionsBox.appendChild(button);
-  });
-}
-
-function checkAnswer(button, selected) {
-
-  if (answered) return;
-
-  answered = true;
-
-  let correct = questions[current].answer;
-
-  let buttons = document.querySelectorAll(".option");
-
-  buttons.forEach(function(btn) {
-    btn.disabled = true;
-  });
-
-  if (selected === correct) {
-
-    button.classList.add("correct");
-
-    score++;
-
-    document.getElementById("score").innerText = score;
-
-    document.getElementById("result").innerText =
-      "✅ Correct! Excellent.";
-
-    document.getElementById("result").style.color = "green";
-
-  } else {
-
-    button.classList.add("wrong");
-
-    buttons[correct].classList.add("correct");
-
-    document.getElementById("result").innerText =
-      "❌ Incorrect. The correct answer is: " +
-      questions[current].options[correct];
-
-    document.getElementById("result").style.color = "red";
-  }
-}
-
-function nextQuestion() {
-
-  if (current < questions.length - 1) {
-
-    current++;
-    loadQuestion();
-
-  } else {
-
-    document.getElementById("question").innerText =
-      "🎉 Chapter practice completed!";
-
-    document.getElementById("ncert").innerText =
-      "You have completed all 15 practice questions.";
-
-    document.getElementById("concept").innerText =
-      "Final Score";
-
-    document.getElementById("options").innerHTML =
-      "<h2>" + score + " / " + questions.length + "</h2>";
-
-    document.getElementById("result").innerText =
-      "🌟 Keep practicing NCERT-based questions!";
-
-    document.querySelector(".next").innerText =
-      "🔄 Restart";
-
-    document.querySelector(".next").onclick = function() {
-      current = 0;
-      score = 0;
-      document.getElementById("score").innerText = 0;
-      loadQuestion();
-    };
-  }
-}
-
-loadQuestion();
-
-</script>
-
-</body>
-</html>      padding: 25px;
-      flex: 1;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    }
-
-    .ncert {
-      border-left: 5px solid #c49a45;
-    }
-
-    .question {
-      border-left: 5px solid #d95c4f;
-    }
-
-    .option {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      background: white;
-      border-radius: 10px;
-      text-align: left;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .option:hover {
-      background: #f0f2f5;
-    }
-
-    .correct {
-      background: #d9f7df !important;
-      border-color: green;
-    }
-
-    .wrong {
-      background: #ffe0e0 !important;
-      border-color: red;
-    }
-
-    #result {
-      margin-top: 15px;
-      font-weight: bold;
-      font-size: 18px;
-    }
-
-    @media (max-width: 700px) {
-      .container {
-        flex-direction: column;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <h1>NCERT → NEET</h1>
-  <p>Every important NCERT line can become a question.</p>
-</header>
-
-<div class="container">
-
-  <div class="box ncert">
-    <h2>📖 NCERT Line</h2>
+    <h2>📝 NEET Practice Question</h2>
 
     <p>
-      The cell membrane is selectively permeable and controls
-      the movement of substances into and out of the cell.
+      <b>Which of the following is considered one of the defining
+      characteristics of living organisms?</b>
     </p>
 
-    <hr>
-
-    <h3>⭐ Important Concept</h3>
-    <p><b>Selective permeability</b></p>
-  </div>
-
-  <div class="box question">
-    <h2>🎯 Probable NEET Question</h2>
-
-    <h3>
-      Which property of the cell membrane allows it to control
-      the movement of substances?
-    </h3>
-
-    <button class="option" onclick="checkAnswer(this, false)">
-      A. Rigidity
+    <button class="option" onclick="checkAnswer('A')">
+      A. Increase in mass
     </button>
 
-    <button class="option" onclick="checkAnswer(this, true)">
-      B. Selective permeability
+    <button class="option" onclick="checkAnswer('B')">
+      B. Metabolism
     </button>
 
-    <button class="option" onclick="checkAnswer(this, false)">
-      C. Thickness
+    <button class="option" onclick="checkAnswer('C')">
+      C. Reproduction only
     </button>
 
-    <button class="option" onclick="checkAnswer(this, false)">
-      D. Cell wall formation
+    <button class="option" onclick="checkAnswer('D')">
+      D. Movement only
     </button>
 
-    <div id="result"></div>
+    <div id="answer"></div>
+
   </div>
 
 </div>
 
+<footer>
+  NCERT → NEET • Biology Learning Platform
+</footer>
+
+
 <script>
-  function checkAnswer(button, correct) {
 
-    let options = document.querySelectorAll(".option");
+  const scenes = [
 
-    options.forEach(function(option) {
-      option.disabled = true;
+    {
+      title: "The Living World",
+      text:
+        "Welcome to Class 11 Biology. In this chapter we begin our journey into the fascinating world of living organisms.",
+      keywords: ["Biology", "Life", "Living World"]
+    },
+
+    {
+      title: "What is Living?",
+      text:
+        "Living organisms show several important characteristics including growth, reproduction, metabolism, cellular organisation and response to stimuli.",
+      keywords: ["Growth", "Reproduction", "Metabolism"]
+    },
+
+    {
+      title: "Growth",
+      text:
+        "Growth involves an increase in mass and an increase in the number of cells. However, growth alone cannot be considered an exclusive characteristic of living organisms.",
+      keywords: ["Growth", "Mass", "Cells"]
+    },
+
+    {
+      title: "Reproduction",
+      text:
+        "Reproduction is the production of new individuals. It may be sexual or asexual. However, reproduction is not an all-inclusive defining characteristic of life.",
+      keywords: ["Sexual", "Asexual", "Reproduction"]
+    },
+
+    {
+      title: "Metabolism",
+      text:
+        "Metabolism refers to the sum total of all chemical reactions occurring inside a living organism. It is an important defining feature of living organisms.",
+      keywords: ["Metabolism", "Chemical reactions"]
+    },
+
+    {
+      title: "Cellular Organisation",
+      text:
+        "The cell is the basic structural and functional unit of life. Living organisms show cellular organisation.",
+      keywords: ["Cell", "Organisation", "Life"]
+    },
+
+    {
+      title: "Response to Stimuli",
+      text:
+        "Living organisms can sense their surroundings and respond to environmental changes. This ability is an important characteristic of life.",
+      keywords: ["Stimulus", "Response", "Environment"]
+    },
+
+    {
+      title: "Taxonomy",
+      text:
+        "The enormous diversity of organisms requires systematic identification, naming and classification. Taxonomy deals with these processes.",
+      keywords: ["Identification", "Nomenclature", "Classification"]
+    },
+
+    {
+      title: "Taxonomic Hierarchy",
+      text:
+        "The major taxonomic categories are species, genus, family, order, class, phylum or division, and kingdom.",
+      keywords: [
+        "Species",
+        "Genus",
+        "Family",
+        "Order",
+        "Class",
+        "Phylum",
+        "Kingdom"
+      ]
+    },
+
+    {
+      title: "NEET Revision",
+      text:
+        "Remember: metabolism is a defining characteristic of living organisms. Species is the basic unit of classification. Taxonomy includes identification, nomenclature and classification.",
+      keywords: ["NEET", "Revision", "NCERT"]
+    }
+
+  ];
+
+
+  let currentScene = 0;
+  let playing = false;
+  let timer;
+
+
+  function showScene() {
+
+    const scene = scenes[currentScene];
+
+    document.getElementById("sceneNumber").innerText =
+      "Scene " + (currentScene + 1) + " / " + scenes.length;
+
+    document.getElementById("sceneTitle").innerText =
+      scene.title;
+
+    document.getElementById("sceneText").innerText =
+      scene.text;
+
+    const keywordBox =
+      document.getElementById("keywords");
+
+    keywordBox.innerHTML = "";
+
+    scene.keywords.forEach(function(keyword) {
+
+      const span = document.createElement("span");
+
+      span.className = "keyword";
+
+      span.innerText = keyword;
+
+      keywordBox.appendChild(span);
+
     });
 
-    if (correct) {
-      button.classList.add("correct");
-      document.getElementById("result").innerHTML =
-        "✅ Correct! Great job.";
-      document.getElementById("result").style.color = "green";
+
+    const progress =
+      ((currentScene + 1) / scenes.length) * 100;
+
+    document.getElementById("progressBar").style.width =
+      progress + "%";
+  }
+
+
+  function nextScene() {
+
+    if (currentScene < scenes.length - 1) {
+
+      currentScene++;
+
+      showScene();
+
     } else {
-      button.classList.add("wrong");
-      document.getElementById("result").innerHTML =
-        "❌ Incorrect. The correct answer is Selective permeability.";
-      document.getElementById("result").style.color = "red";
+
+      stopVideo();
+
     }
+
   }
-</script>
 
-</body>
-</html>      padding: 25px;
-      flex: 1;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+  function previousScene() {
+
+    if (currentScene > 0) {
+
+      currentScene--;
+
+      showScene();
+
     }
 
-    .ncert {
-      border-left: 5px solid #c49a45;
+  }
+
+
+  function playVideo() {
+
+    if (playing) {
+
+      stopVideo();
+
+      return;
+
     }
 
-    .question {
-      border-left: 5px solid #d95c4f;
-    }
+    playing = true;
 
-    .option {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      background: white;
-      border-radius: 10px;
-      text-align: left;
-      cursor: pointer;
-      font-size: 16px;
-    }
+    document.getElementById("playButton").innerText =
+      "⏸ Pause";
 
-    .option:hover {
-      background: #f0f2f5;
-    }
+    timer = setInterval(function() {
 
-    .correct {
-      background: #d9f7df !important;
-      border-color: green;
-    }
+      if (currentScene < scenes.length - 1) {
 
-    .wrong {
-      background: #ffe0e0 !important;
-      border-color: red;
-    }
+        currentScene++;
 
-    #result {
-      margin-top: 15px;
-      font-weight: bold;
-      font-size: 18px;
-    }
+        showScene();
 
-    @media (max-width: 700px) {
-      .container {
-        flex-direction: column;
+      } else {
+
+        stopVideo();
+
       }
-    }
-  </style>
-</head>
 
-<body>
+    }, 5000);
 
-<header>
-  <h1>NCERT → NEET</h1>
-  <p>Every important NCERT line can become a question.</p>
-</header>
+  }
 
-<div class="container">
 
-  <div class="box ncert">
-    <h2>📖 NCERT Line</h2>
+  function stopVideo() {
 
-    <p>
-      The cell membrane is selectively permeable and controls
-      the movement of substances into and out of the cell.
-    </p>
+    playing = false;
 
-    <hr>
+    clearInterval(timer);
 
-    <h3>⭐ Important Concept</h3>
-    <p><b>Selective permeability</b></p>
-  </div>
+    document.getElementById("playButton").innerText =
+      "▶ Play";
 
-  <div class="box question">
-    <h2>🎯 Probable NEET Question</h2>
+  }
 
-    <h3>
-      Which property of the cell membrane allows it to control
-      the movement of substances?
-    </h3>
 
-    <button class="option" onclick="checkAnswer(this, false)">
-      A. Rigidity
-    </button>
+  function checkAnswer(answer) {
 
-    <button class="option" onclick="checkAnswer(this, true)">
-      B. Selective permeability
-    </button>
+    const result =
+      document.getElementById("answer");
 
-    <button class="option" onclick="checkAnswer(this, false)">
-      C. Thickness
-    </button>
+    if (answer === "B") {
 
-    <button class="option" onclick="checkAnswer(this, false)">
-      D. Cell wall formation
-    </button>
+      result.innerHTML =
+        "✅ Correct! Metabolism is an important defining characteristic of living organisms.";
 
-    <div id="result"></div>
-  </div>
+      result.style.color = "green";
 
-</div>
-
-<script>
-  function checkAnswer(button, correct) {
-
-    let options = document.querySelectorAll(".option");
-
-    options.forEach(function(option) {
-      option.disabled = true;
-    });
-
-    if (correct) {
-      button.classList.add("correct");
-      document.getElementById("result").innerHTML =
-        "✅ Correct! Great job.";
-      document.getElementById("result").style.color = "green";
     } else {
-      button.classList.add("wrong");
-      document.getElementById("result").innerHTML =
-        "❌ Incorrect. The correct answer is Selective permeability.";
-      document.getElementById("result").style.color = "red";
+
+      result.innerHTML =
+        "❌ Incorrect. Try again. Think about the chemical reactions occurring inside living organisms.";
+
+      result.style.color = "red";
+
     }
+
   }
-</script>
 
-</body>
-</html>      cursor: pointer;
-      font-size: 16px;
-    }
 
-    .option:hover {
-      background: #f0f2f5;
-    }
+  showScene();
 
-    .correct {
-      background: #d9f7df !important;
-      border-color: green;
-    }
-
-    .wrong {
-      background: #ffe0e0 !important;
-      border-color: red;
-    }
-
-    #result {
-      margin-top: 15px;
-      font-weight: bold;
-      font-size: 18px;
-    }
-
-    @media (max-width: 700px) {
-      .container {
-        flex-direction: column;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <h1>NCERT → NEET</h1>
-  <p>Every important NCERT line can become a question.</p>
-</header>
-
-<div class="container">
-
-  <div class="box ncert">
-    <h2>📖 NCERT Line</h2>
-
-    <p>
-      The cell membrane is selectively permeable and controls
-      the movement of substances into and out of the cell.
-    </p>
-
-    <hr>
-
-    <h3>⭐ Important Concept</h3>
-    <p><b>Selective permeability</b></p>
-  </div>
-
-  <div class="box question">
-    <h2>🎯 Probable NEET Question</h2>
-
-    <h3>
-      Which property of the cell membrane allows it to control
-      the movement of substances?
-    </h3>
-
-    <button class="option" onclick="checkAnswer(this, false)">
-      A. Rigidity
-    </button>
-
-    <button class="option" onclick="checkAnswer(this, true)">
-      B. Selective permeability
-    </button>
-
-    <button class="option" onclick="checkAnswer(this, false)">
-      C. Thickness
-    </button>
-
-    <button class="option" onclick="checkAnswer(this, false)">
-      D. Cell wall formation
-    </button>
-
-    <div id="result"></div>
-  </div>
-
-</div>
-
-<script>
-  function checkAnswer(button, correct) {
-
-    let options = document.querySelectorAll(".option");
-
-    options.forEach(function(option) {
-      option.disabled = true;
-    });
-
-    if (correct) {
-      button.classList.add("correct");
-      document.getElementById("result").innerHTML =
-        "✅ Correct! Great job.";
-      document.getElementById("result").style.color = "green";
-    } else {
-      button.classList.add("wrong");
-      document.getElementById("result").innerHTML =
-        "❌ Incorrect. The correct answer is Selective permeability.";
-      document.getElementById("result").style.color = "red";
-    }
-  }
-</script>
-
-</body>
-</html>     margin-top: 15px;
-      font-weight: bold;
-    }
-
-    @media(max-width: 700px) {
-      .container {
-        flex-direction: column;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <h1>NCERT → NEET</h1>
-  <p>Every important NCERT line can become a question.</p>
-</header>
-
-<div class="container">
-
-  <div class="box ncert">
-    <h2>📖 NCERT Line</h2>
-
-    <p>
-      The cell membrane is selectively permeable and controls
-      the movement of substances into and out of the cell.
-    </p>
-
-    <hr>
-
-    <h3>⭐ Important concept</h3>
-    <p><b>Selective permeability</b></p>
-  </div>
-
-  <div class="box question">
-    <h2>🎯 Probable NEET Question</h2>
-
-    <h3>
-      Which property of the cell membrane allows it to control
-      the movement of substances?
-    </h3>
-
-    <button class="option" onclick="checkAnswer(false)">
-      A. Complete permeability
-    </button>
-
-    <button class="option" onclick="checkAnswer(true)">
-      B. Selective permeability
-    </button>
-
-    <button class="option" onclick="checkAnswer(false)">
-      C. Complete impermeability
-    </button>
-
-    <button class="option" onclick="checkAnswer(false)">
-      D. Permanent rigidity
-    </button>
-
-    <div id="result"></div>
-  </div>
-
-</div>
-
-<script>
-function checkAnswer(correct) {
-
-  const result = document.getElementById("result");
-
-  if (correct) {
-    result.innerHTML = "✅ Correct! This answer comes directly from the NCERT concept.";
-    result.style.color = "green";
-  } else {
-    result.innerHTML = "❌ Incorrect. Read the NCERT line again.";
-    result.style.color = "red";
-  }
-}
 </script>
 
 </body>
