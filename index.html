@@ -1,544 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>NCERT → NEET | The Living World</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #172033;
-    }
-
-    header {
-      background: #172033;
-      color: white;
-      padding: 18px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 26px;
-    }
-
-    header p {
-      margin: 7px 0 0;
-      color: #d9e1ee;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .chapter {
-      background: white;
-      border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    }
-
-    .chapter h2 {
-      margin-top: 0;
-    }
-
-    .video {
-      background: #101827;
-      color: white;
-      border-radius: 16px;
-      min-height: 420px;
-      padding: 35px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .video::before {
-      content: "";
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: rgba(73, 157, 255, 0.12);
-      top: -120px;
-      right: -80px;
-    }
-
-    .video::after {
-      content: "";
-      position: absolute;
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      background: rgba(255, 193, 7, 0.08);
-      bottom: -100px;
-      left: -70px;
-    }
-
-    .scene-number {
-      font-size: 14px;
-      color: #8ec5ff;
-      margin-bottom: 15px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .scene-title {
-      font-size: 34px;
-      margin: 10px 0 20px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .scene-text {
-      max-width: 800px;
-      margin: auto;
-      font-size: 19px;
-      line-height: 1.7;
-      color: #e8edf5;
-      position: relative;
-      z-index: 2;
-    }
-
-    .keyword {
-      display: inline-block;
-      background: #243550;
-      padding: 8px 14px;
-      border-radius: 20px;
-      margin: 5px;
-      color: #9fd0ff;
-      font-weight: bold;
-      position: relative;
-      z-index: 2;
-    }
-
-    .controls {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 18px;
-      flex-wrap: wrap;
-    }
-
-    button {
-      border: none;
-      padding: 12px 20px;
-      border-radius: 9px;
-      font-size: 16px;
-      cursor: pointer;
-      background: #2563eb;
-      color: white;
-    }
-
-    button:hover {
-      background: #1d4ed8;
-    }
-
-    button.secondary {
-      background: #475569;
-    }
-
-    .progress {
-      height: 7px;
-      background: #dbe3ee;
-      border-radius: 10px;
-      margin-top: 18px;
-      overflow: hidden;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: #2563eb;
-      transition: width 0.3s;
-    }
-
-    .mcq {
-      margin-top: 20px;
-      background: white;
-      border-radius: 14px;
-      padding: 22px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-    }
-
-    .option {
-      display: block;
-      width: 100%;
-      text-align: left;
-      margin: 9px 0;
-      background: #f1f5f9;
-      color: #172033;
-    }
-
-    .option:hover {
-      background: #e2e8f0;
-    }
-
-    #answer {
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #64748b;
-    }
-
-    @media (max-width: 600px) {
-      .video {
-        min-height: 480px;
-        padding: 22px;
-      }
-
-      .scene-title {
-        font-size: 27px;
-      }
-
-      .scene-text {
-        font-size: 17px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEET UG Command Center - Quantum Tracker</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN for Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background: #0f172a;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-bio { box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); }
+        .glow-chem { box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
+        .glow-phy { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
+    </style>
 </head>
+<body class="min-h-screen pb-12">
 
-<body>
+    <!-- Header Navigation -->
+    <header class="glass sticky top-0 z-50 px-6 py-4 mb-8 flex justify-between items-center border-b border-slate-700/50">
+        <div class="flex items-center space-x-3">
+            <div class="p-2 bg-emerald-500/20 rounded-lg text-emerald-400">
+                <i data-lucide="brain-circuit" class="w-8 h-8"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-500">
+                    NEET QUANTUM TRACKER
+                </h1>
+                <p class="text-xs text-slate-400">AI Adaptive Learning & Progress Ecosystem</p>
+            </div>
+        </div>
+        <div id="phaseBadge" class="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Phase: Bio-Focus Priority
+        </div>
+    </header>
 
-<header>
-  <h1>NCERT → NEET</h1>
-  <p>Class 11 Biology • Chapter 1 • The Living World</p>
-</header>
+    <div class="max-w-7xl mx-auto px-4 space-y-8">
 
-<div class="container">
+        <!-- Top Metrics & Adaptive AI Allocation -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <!-- Overall Progress -->
+            <div class="glass p-6 rounded-2xl flex flex-col justify-between">
+                <div class="flex justify-between items-center">
+                    <span class="text-slate-400 text-sm font-medium">Syllabus Mastered</span>
+                    <i data-lucide="award" class="text-emerald-400 w-5 h-5"></i>
+                </div>
+                <div class="my-4">
+                    <div class="text-4xl font-bold text-white" id="overallPerc">0%</div>
+                    <div class="w-full bg-slate-700/50 h-2.5 rounded-full mt-3 overflow-hidden">
+                        <div id="overallProgressBar" class="bg-gradient-to-r from-emerald-500 to-teal-300 h-full w-0 transition-all duration-500"></div>
+                    </div>
+                </div>
+                <span class="text-xs text-slate-400" id="topicCountText">0 / 0 Topics Done</span>
+            </div>
 
-  <div class="chapter">
-    <h2>🎬 The Living World — Video Lesson</h2>
-    <p>
-      Learn the important concepts of Chapter 1 and revise them for NEET.
-    </p>
+            <!-- Dynamic Study Time Allocation (AI Engine) -->
+            <div class="glass p-6 rounded-2xl md:col-span-3">
+                <div class="flex justify-between items-center mb-2">
+                    <div>
+                        <h3 class="font-bold text-slate-200 text-base">Adaptive AI Time Distribution Plan</h3>
+                        <p class="text-xs text-slate-400">Dynamically balances as your progress & test performance increase</p>
+                    </div>
+                    <span id="equilibriumStatus" class="text-xs px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20">Phase 1: Heavy Biology Focus</span>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mt-4 text-center">
+                    <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20 glow-bio">
+                        <span class="text-xs text-emerald-400 font-semibold uppercase">Biology</span>
+                        <div class="text-2xl font-bold text-emerald-300 mt-1" id="bioTimeShare">50%</div>
+                        <span class="text-[10px] text-slate-400">Target daily priority</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-blue-950/30 border border-blue-500/20 glow-chem">
+                        <span class="text-xs text-blue-400 font-semibold uppercase">Chemistry</span>
+                        <div class="text-2xl font-bold text-blue-300 mt-1" id="chemTimeShare">30%</div>
+                        <span class="text-[10px] text-slate-400">Secondary emphasis</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-amber-950/30 border border-amber-500/20 glow-phy">
+                        <span class="text-xs text-amber-400 font-semibold uppercase">Physics</span>
+                        <div class="text-2xl font-bold text-amber-300 mt-1" id="phyTimeShare">20%</div>
+                        <span class="text-[10px] text-slate-400">Foundation building</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="video">
+        <!-- Section 2: Custom Chapter & Topic Tracker -->
+        <div class="glass p-6 rounded-2xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                <div>
+                    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i data-lucide="book-open" class="text-teal-400 w-5 h-5"></i>
+                        Custom Subject & Chapter Manager
+                    </h2>
+                    <p class="text-xs text-slate-400">Add custom chapters/topics and monitor completion status</p>
+                </div>
+                <!-- Controls -->
+                <button onclick="toggleAddChapterModal()" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-semibold text-xs rounded-xl flex items-center gap-2 transition">
+                    <i data-lucide="plus" class="w-4 h-4"></i> Add Custom Chapter
+                </button>
+            </div>
 
-      <div class="scene-number" id="sceneNumber">
-        Scene 1 / 10
-      </div>
+            <!-- Subject Tabs -->
+            <div class="flex gap-2 border-b border-slate-700/60 pb-3 mb-6">
+                <button onclick="switchTab('Biology')" id="tabBio" class="px-5 py-2 rounded-xl text-xs font-bold transition bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">Biology</button>
+                <button onclick="switchTab('Chemistry')" id="tabChem" class="px-5 py-2 rounded-xl text-xs font-bold transition text-slate-400 hover:bg-slate-800">Chemistry</button>
+                <button onclick="switchTab('Physics')" id="tabPhy" class="px-5 py-2 rounded-xl text-xs font-bold transition text-slate-400 hover:bg-slate-800">Physics</button>
+            </div>
 
-      <h2 class="scene-title" id="sceneTitle">
-        The Living World
-      </h2>
+            <!-- Chapter Accordions Container -->
+            <div id="chaptersContainer" class="space-y-4">
+                <!-- Dynamically Populated -->
+            </div>
+        </div>
 
-      <p class="scene-text" id="sceneText">
-        Welcome to Class 11 Biology. In this chapter we begin our journey
-        into the fascinating world of living organisms.
-      </p>
+        <!-- Section 3: Mock Test & Coaching Analytics Hub -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Mock Log Form -->
+            <div class="glass p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <h3 class="text-md font-bold text-white mb-1 flex items-center gap-2">
+                        <i data-lucide="file-plus" class="text-cyan-400 w-5 h-5"></i>
+                        Log Mock Test Result
+                    </h3>
+                    <p class="text-xs text-slate-400 mb-4">Works for all coaching tests (Allen, Aakash, PW, etc.)</p>
+                    
+                    <form id="mockForm" onsubmit="saveMockTest(event)" class="space-y-3">
+                        <div>
+                            <label class="text-[11px] text-slate-300 font-medium">Test Name / Coaching Institute</label>
+                            <input type="text" id="mockName" placeholder="e.g. Minor Test 04 - Allen" required class="w-full mt-1 bg-slate-900/80 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div>
+                                <label class="text-[10px] text-emerald-400">Bio (/360)</label>
+                                <input type="number" id="mockBio" max="360" min="0" required class="w-full mt-1 bg-slate-900/80 border border-slate-700 rounded-xl px-2 py-2 text-xs text-slate-200 text-center">
+                            </div>
+                            <div>
+                                <label class="text-[10px] text-blue-400">Chem (/180)</label>
+                                <input type="number" id="mockChem" max="180" min="0" required class="w-full mt-1 bg-slate-900/80 border border-slate-700 rounded-xl px-2 py-2 text-xs text-slate-200 text-center">
+                            </div>
+                            <div>
+                                <label class="text-[10px] text-amber-400">Phy (/180)</label>
+                                <input type="number" id="mockPhy" max="180" min="0" required class="w-full mt-1 bg-slate-900/80 border border-slate-700 rounded-xl px-2 py-2 text-xs text-slate-200 text-center">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 mt-2 bg-gradient-to-r from-teal-500 to-emerald-500 text-slate-950 font-bold text-xs rounded-xl shadow-lg hover:opacity-90 transition">
+                            Save Score & Re-analyze Progress
+                        </button>
+                    </form>
+                </div>
+            </div>
 
-      <div id="keywords"></div>
+            <!-- Score History & Visual Chart -->
+            <div class="glass p-6 rounded-2xl lg:col-span-2 flex flex-col justify-between">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-md font-bold text-white flex items-center gap-2">
+                        <i data-lucide="trending-up" class="text-emerald-400 w-5 h-5"></i>
+                        Mock Performance Trajectory
+                    </h3>
+                    <span class="text-xs text-slate-400">Target: 680+</span>
+                </div>
+                <div class="h-48 w-full">
+                    <canvas id="scoreChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: AI Intelligent Mock Diagnostics Engine -->
+        <div class="glass p-6 rounded-2xl border-l-4 border-cyan-500">
+            <div class="flex items-center gap-3 mb-2">
+                <i data-lucide="sparkles" class="text-cyan-400 w-6 h-6 animate-spin"></i>
+                <h3 class="text-md font-bold text-white">AI Real-time Mock Diagnostic & Strategy Recommendation</h3>
+            </div>
+            <div id="aiAdviceBox" class="text-xs text-slate-300 leading-relaxed space-y-2">
+                Log your first mock test to generate custom AI recommendations based on your subject performance gaps.
+            </div>
+        </div>
 
     </div>
 
-    <div class="controls">
-      <button class="secondary" onclick="previousScene()">
-        ◀ Previous
-      </button>
-
-      <button onclick="playVideo()" id="playButton">
-        ▶ Play
-      </button>
-
-      <button onclick="nextScene()">
-        Next ▶
-      </button>
+    <!-- Modal for Adding Custom Chapter -->
+    <div id="addModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4">
+        <div class="glass max-w-md w-full p-6 rounded-2xl space-y-4">
+            <div class="flex justify-between items-center">
+                <h3 class="text-md font-bold text-white">Add Custom Chapter</h3>
+                <button onclick="toggleAddChapterModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div>
+                <label class="text-xs text-slate-300">Select Subject</label>
+                <select id="modalSubject" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-xs text-slate-200">
+                    <option value="Biology">Biology</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Physics">Physics</option>
+                </select>
+            </div>
+            <div>
+                <label class="text-xs text-slate-300">Chapter Title</label>
+                <input type="text" id="modalChapterName" placeholder="e.g., Plant Kingdom / Organic Mechanisms" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-xs text-slate-200">
+            </div>
+            <div>
+                <label class="text-xs text-slate-300">Topics (Comma Separated)</label>
+                <textarea id="modalTopics" placeholder="e.g. Topic A, Topic B, Topic C" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-xs text-slate-200 h-20"></textarea>
+            </div>
+            <button onclick="saveCustomChapter()" class="w-full py-2.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-emerald-400 transition">Save Chapter</button>
+        </div>
     </div>
 
-    <div class="progress">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-
-  </div>
-
-
-  <div class="mcq">
-
-    <h2>📝 NEET Practice Question</h2>
-
-    <p>
-      <b>Which of the following is considered one of the defining
-      characteristics of living organisms?</b>
-    </p>
-
-    <button class="option" onclick="checkAnswer('A')">
-      A. Increase in mass
-    </button>
-
-    <button class="option" onclick="checkAnswer('B')">
-      B. Metabolism
-    </button>
-
-    <button class="option" onclick="checkAnswer('C')">
-      C. Reproduction only
-    </button>
-
-    <button class="option" onclick="checkAnswer('D')">
-      D. Movement only
-    </button>
-
-    <div id="answer"></div>
-
-  </div>
-
-</div>
-
-<footer>
-  NCERT → NEET • Biology Learning Platform
-</footer>
-
-
-<script>
-
-  const scenes = [
-
-    {
-      title: "The Living World",
-      text:
-        "Welcome to Class 11 Biology. In this chapter we begin our journey into the fascinating world of living organisms.",
-      keywords: ["Biology", "Life", "Living World"]
-    },
-
-    {
-      title: "What is Living?",
-      text:
-        "Living organisms show several important characteristics including growth, reproduction, metabolism, cellular organisation and response to stimuli.",
-      keywords: ["Growth", "Reproduction", "Metabolism"]
-    },
-
-    {
-      title: "Growth",
-      text:
-        "Growth involves an increase in mass and an increase in the number of cells. However, growth alone cannot be considered an exclusive characteristic of living organisms.",
-      keywords: ["Growth", "Mass", "Cells"]
-    },
-
-    {
-      title: "Reproduction",
-      text:
-        "Reproduction is the production of new individuals. It may be sexual or asexual. However, reproduction is not an all-inclusive defining characteristic of life.",
-      keywords: ["Sexual", "Asexual", "Reproduction"]
-    },
-
-    {
-      title: "Metabolism",
-      text:
-        "Metabolism refers to the sum total of all chemical reactions occurring inside a living organism. It is an important defining feature of living organisms.",
-      keywords: ["Metabolism", "Chemical reactions"]
-    },
-
-    {
-      title: "Cellular Organisation",
-      text:
-        "The cell is the basic structural and functional unit of life. Living organisms show cellular organisation.",
-      keywords: ["Cell", "Organisation", "Life"]
-    },
-
-    {
-      title: "Response to Stimuli",
-      text:
-        "Living organisms can sense their surroundings and respond to environmental changes. This ability is an important characteristic of life.",
-      keywords: ["Stimulus", "Response", "Environment"]
-    },
-
-    {
-      title: "Taxonomy",
-      text:
-        "The enormous diversity of organisms requires systematic identification, naming and classification. Taxonomy deals with these processes.",
-      keywords: ["Identification", "Nomenclature", "Classification"]
-    },
-
-    {
-      title: "Taxonomic Hierarchy",
-      text:
-        "The major taxonomic categories are species, genus, family, order, class, phylum or division, and kingdom.",
-      keywords: [
-        "Species",
-        "Genus",
-        "Family",
-        "Order",
-        "Class",
-        "Phylum",
-        "Kingdom"
-      ]
-    },
-
-    {
-      title: "NEET Revision",
-      text:
-        "Remember: metabolism is a defining characteristic of living organisms. Species is the basic unit of classification. Taxonomy includes identification, nomenclature and classification.",
-      keywords: ["NEET", "Revision", "NCERT"]
-    }
-
-  ];
-
-
-  let currentScene = 0;
-  let playing = false;
-  let timer;
-
-
-  function showScene() {
-
-    const scene = scenes[currentScene];
-
-    document.getElementById("sceneNumber").innerText =
-      "Scene " + (currentScene + 1) + " / " + scenes.length;
-
-    document.getElementById("sceneTitle").innerText =
-      scene.title;
-
-    document.getElementById("sceneText").innerText =
-      scene.text;
-
-    const keywordBox =
-      document.getElementById("keywords");
-
-    keywordBox.innerHTML = "";
-
-    scene.keywords.forEach(function(keyword) {
-
-      const span = document.createElement("span");
-
-      span.className = "keyword";
-
-      span.innerText = keyword;
-
-      keywordBox.appendChild(span);
-
-    });
-
-
-    const progress =
-      ((currentScene + 1) / scenes.length) * 100;
-
-    document.getElementById("progressBar").style.width =
-      progress + "%";
-  }
-
-
-  function nextScene() {
-
-    if (currentScene < scenes.length - 1) {
-
-      currentScene++;
-
-      showScene();
-
-    } else {
-
-      stopVideo();
-
-    }
-
-  }
-
-
-  function previousScene() {
-
-    if (currentScene > 0) {
-
-      currentScene--;
-
-      showScene();
-
-    }
-
-  }
-
-
-  function playVideo() {
-
-    if (playing) {
-
-      stopVideo();
-
-      return;
-
-    }
-
-    playing = true;
-
-    document.getElementById("playButton").innerText =
-      "⏸ Pause";
-
-    timer = setInterval(function() {
-
-      if (currentScene < scenes.length - 1) {
-
-        currentScene++;
-
-        showScene();
-
-      } else {
-
-        stopVideo();
-
-      }
-
-    }, 5000);
-
-  }
-
-
-  function stopVideo() {
-
-    playing = false;
-
-    clearInterval(timer);
-
-    document.getElementById("playButton").innerText =
-      "▶ Play";
-
-  }
-
-
-  function checkAnswer(answer) {
-
-    const result =
-      document.getElementById("answer");
-
-    if (answer === "B") {
-
-      result.innerHTML =
-        "✅ Correct! Metabolism is an important defining characteristic of living organisms.";
-
-      result.style.color = "green";
-
-    } else {
-
-      result.innerHTML =
-        "❌ Incorrect. Try again. Think about the chemical reactions occurring inside living organisms.";
-
-      result.style.color = "red";
-
-    }
-
-  }
-
-
-  showScene();
-
-</script>
-
-</body>
-</html>
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Default Core NEET Structure
+        const defaultData = {
+            Biology: [
+                { id: "b1", name: "Cell: The Unit of Life", topics: [{ name: "Cell Theory & Structure", done: false }, { name: "Organelles", done: false }, { name: "Mitosis & Meiosis", done: false }] },
+                { id: "b2", name: "Human Physiology", topics: [{ name: "Breathing & Exchange of Gases", done: false }, { name: "Body Fluids & Circulation", done: false }, { name: "Neural Control", done: false }] }
+            ],
+            Chemistry: [
+                { id: "c1", name: "Some Basic Concepts of Chemistry", topics: [{ name: "Mole Concept", done: false }, { name: "Stoichiometry", done: false }] },
+                { id: "c2", name: "Organic Chemistry: Basic Principles", topics: [{ name: "IUPAC Nomenclature", done: false }, { name: "Inductive & Resonance Effects", done: false }] }
+            ],
+            Physics: [
+                { id: "p1", name: "Units and Measurements", topics: [{ name: "Dimensional Analysis", done: false }, { name: "Errors in Measurement", done: false }] },
+                { id: "p2", name: "Electrostatics", topics: [{ name: "Coulomb's Law", done: false }, { name: "Electric Potential & Capacitance", done: false }] }
+            ]
+        };
+
+        // State Management
+        let appData = JSON.parse(localStorage.getItem('neet_tracker_data')) || defaultData;
+        let mockData = JSON.parse(localStorage.getItem('neet_tracker_mocks')) || [];
+        let currentTab = 'Biology';
+        let chartInstance = null;
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderChapters();
+            updateCalculations();
+            initChart();
+            runAIDiagnostics();
+        });
+
+        // Tab Switcher
+        function switchTab(subject) {
+            currentTab = subject;
+            ['Bio', 'Chem', 'Phy'].forEach(s => {
+                const btn = document.getElementById(`tab${s}`);
+                btn.className = "px-5 py-2 rounded-xl text-xs font-bold transition text-slate-400 hover:bg-slate-800";
+            });
+            
+            const activeMap = { Biology: 'tabBio', Chemistry: 'tabChem', Physics: 'tabPhy' };
+            const activeColor = { Biology: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40', Chemistry: 'bg-blue-500/20 text-blue-300 border-blue-500/40', Physics: 'bg-amber-500/20 text-amber-300 border-amber-500/40' };
+            
+            const activeBtn = document.getElementById(activeMap[subject]);
+            activeBtn.className = `px-5 py-2 rounded-xl text-xs font-bold transition border ${activeColor[subject]}`;
+
+            renderChapters();
+        }
+
+        // Render Syllabus Accordions
+        function renderChapters() {
+            const container = document.getElementById('chaptersContainer');
+            container.innerHTML = '';
+
+            const list = appData[currentTab] || [];
+            if (list.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-xs text-slate-500">No chapters added yet. Click "Add Custom Chapter" to begin!</div>`;
+                return;
+            }
+
+            list.forEach((ch, chIdx) => {
+                const total = ch.topics.length;
+                const completed = ch.topics.filter(t => t.done).length;
+                const perc = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+                const card = document.createElement('div');
+                card.className = "bg-slate-900/60 border border-slate-800 rounded-xl p-4";
+                
+                let topicsHTML = ch.topics.map((top, topIdx) => `
+                    <div class="flex items-center justify-between py-1.5 border-b border-slate-800/40 last:border-none">
+                        <label class="flex items-center gap-3 cursor-pointer text-xs text-slate-300 hover:text-white">
+                            <input type="checkbox" ${top.done ? 'checked' : ''} onchange="toggleTopic('${currentTab}', ${chIdx}, ${topIdx})" class="w-4 h-4 rounded border-slate-700 bg-slate-950 text-emerald-500 focus:ring-0 focus:ring-offset-0">
+                            <span class="${top.done ? 'line-through text-slate-500' : ''}">${top.name}</span>
+                        </label>
+                    </div>
+                `).join('');
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-center mb-3">
+                        <div class="flex items-center gap-3">
+                            <h4 class="font-bold text-sm text-slate-200">${ch.name}</h4>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400">${completed}/${total} Done</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="text-xs font-bold text-emerald-400">${perc}%</span>
+                            <button onclick="deleteChapter('${currentTab}', ${chIdx})" class="text-slate-600 hover:text-red-400 transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                    <div class="w-full bg-slate-800 h-1.5 rounded-full mb-3 overflow-hidden">
+                        <div class="bg-emerald-500 h-full" style="width: ${perc}%"></div>
+                    </div>
+                    <div class="pl-2 space-y-1">
+                        ${topicsHTML}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // Toggle Topic Completion
+        function toggleTopic(subject, chIdx, topIdx) {
+            appData[subject][chIdx].topics[topIdx].done = !appData[subject][chIdx].topics[topIdx].done;
+            saveData();
+            renderChapters();
+            updateCalculations();
+        }
+
+        // Add Custom Chapter
+        function toggleAddChapterModal() {
+            const modal = document.getElementById('addModal');
+            modal.classList.toggle('hidden');
+        }
+
+        function saveCustomChapter() {
+            const sub = document.getElementById('modalSubject').value;
+            const name = document.getElementById('modalChapterName').value.trim();
+            const topicsRaw = document.getElementById('modalTopics').value.trim();
+
+            if (!name || !topicsRaw) return alert('Please enter both chapter name and topics!');
+
+            const topics = topicsRaw.split(',').map(t => ({ name: t.trim(), done: false })).filter(t => t.name.length > 0);
+
+            if (!appData
