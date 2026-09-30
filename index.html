@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEET UG Command Center - Quantum Tracker</title>
+    <title>NEET UG Command Center - Quantum Tracker v2.0</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js CDN for Analytics -->
@@ -38,7 +38,7 @@
                 <h1 class="text-xl font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-500">
                     NEET QUANTUM TRACKER
                 </h1>
-                <p class="text-xs text-slate-400">AI Adaptive Learning & Progress Ecosystem</p>
+                <p class="text-xs text-slate-400">AI Adaptive Learning, Diary & Timetable Command Center</p>
             </div>
         </div>
         <div id="phaseBadge" class="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-2">
@@ -95,7 +95,100 @@
             </div>
         </div>
 
-        <!-- Section 2: Custom Chapter & Topic Tracker -->
+        <!-- NEW FEATURE 1 & 2: TIMER & TIMETABLE GRID -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Dynamic Custom Study Timer -->
+            <div class="glass p-6 rounded-2xl flex flex-col justify-between">
+                <div>
+                    <h3 class="text-md font-bold text-white mb-1 flex items-center gap-2">
+                        <i data-lucide="timer" class="text-emerald-400 w-5 h-5"></i>
+                        Custom Focus Study Timer
+                    </h3>
+                    <p class="text-xs text-slate-400 mb-4">Set target minutes for study sessions</p>
+                    
+                    <div class="text-center py-4 bg-slate-900/60 border border-slate-800 rounded-xl mb-4">
+                        <div id="timerDisplay" class="text-5xl font-extrabold tracking-wider font-mono text-emerald-400">25:00</div>
+                        <div id="timerMode" class="text-[11px] text-slate-400 mt-1 uppercase font-semibold tracking-wide">Focus Session</div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex gap-2">
+                            <input type="number" id="customMinutes" placeholder="Minutes" value="25" min="1" max="300" class="w-full bg-slate-900/80 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 text-center">
+                            <button onclick="setCustomTimer()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 transition">Set</button>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button onclick="startTimer()" class="py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl transition">Start</button>
+                            <button onclick="pauseTimer()" class="py-2.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 font-bold text-xs border border-amber-500/30 rounded-xl transition">Pause</button>
+                            <button onclick="resetTimer()" class="py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs rounded-xl transition">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Daily Timetable (Study, Sleep, Coaching) -->
+            <div class="glass p-6 rounded-2xl lg:col-span-2">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h3 class="text-md font-bold text-white flex items-center gap-2">
+                            <i data-lucide="calendar" class="text-teal-400 w-5 h-5"></i>
+                            Daily Schedule & Routine Manager
+                        </h3>
+                        <p class="text-xs text-slate-400">Organize study blocks, coaching classes, breaks, and sleep schedule</p>
+                    </div>
+                    <button onclick="toggleScheduleModal()" class="px-3 py-1.5 bg-teal-500/20 hover:bg-teal-500/30 text-teal-300 border border-teal-500/30 font-semibold text-xs rounded-xl flex items-center gap-1.5 transition">
+                        <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add Slot
+                    </button>
+                </div>
+
+                <div id="scheduleContainer" class="space-y-2.5 max-h-64 overflow-y-auto pr-1">
+                    <!-- Dynamically Populated -->
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW FEATURE 3: DIGITAL STUDY DIARY / JOURNAL -->
+        <div class="glass p-6 rounded-2xl">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h3 class="text-md font-bold text-white flex items-center gap-2">
+                        <i data-lucide="book-marked" class="text-cyan-400 w-5 h-5"></i>
+                        NEET Digital Study Diary
+                    </h3>
+                    <p class="text-xs text-slate-400">Log study entries, daily achievements, coaching notes, and mistake highlights</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Add Diary Entry -->
+                <form onsubmit="saveDiaryEntry(event)" class="space-y-3">
+                    <div>
+                        <label class="text-[11px] text-slate-300 font-medium">Category / Subject</label>
+                        <select id="diaryCategory" class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-xs text-slate-200">
+                            <option value="General Study">General Study Log</option>
+                            <option value="Biology Note">Biology Reflection</option>
+                            <option value="Chemistry Note">Chemistry Reflection</option>
+                            <option value="Physics Note">Physics Reflection</option>
+                            <option value="Mistake Notebook">Mock Test Mistake Log</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[11px] text-slate-300 font-medium">Diary Notes / Today's Summary</label>
+                        <textarea id="diaryContent" required placeholder="What did you study today? Mention topics covered, tricky formulas, or mistakes to review..." class="w-full mt-1 bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-xs text-slate-200 h-28 focus:outline-none focus:border-cyan-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-2.5 bg-gradient-to-r from-cyan-500 to-teal-500 text-slate-950 font-bold text-xs rounded-xl hover:opacity-90 transition">
+                        Add Diary Entry
+                    </button>
+                </form>
+
+                <!-- Diary Entries Stream -->
+                <div class="lg:col-span-2 space-y-3 max-h-64 overflow-y-auto pr-1" id="diaryContainer">
+                    <!-- Dynamically Populated -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Custom Chapter & Topic Tracker -->
         <div class="glass p-6 rounded-2xl">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                 <div>
@@ -124,7 +217,7 @@
             </div>
         </div>
 
-        <!-- Section 3: Mock Test & Coaching Analytics Hub -->
+        <!-- Section: Mock Test & Coaching Analytics Hub -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <!-- Mock Log Form -->
             <div class="glass p-6 rounded-2xl flex flex-col justify-between">
@@ -138,7 +231,7 @@
                     <form id="mockForm" onsubmit="saveMockTest(event)" class="space-y-3">
                         <div>
                             <label class="text-[11px] text-slate-300 font-medium">Test Name / Coaching Institute</label>
-                            <input type="text" id="mockName" placeholder="e.g. Minor Test 04 - Allen" required class="w-full mt-1 bg-slate-900/80 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+                            <input type="text" id="mockName" placeholder="e.g. Minor Test 04 - Coaching" required class="w-full mt-1 bg-slate-900/80 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
                         </div>
                         <div class="grid grid-cols-3 gap-2">
                             <div>
@@ -176,7 +269,7 @@
             </div>
         </div>
 
-        <!-- Section 4: AI Intelligent Mock Diagnostics Engine -->
+        <!-- Section: AI Intelligent Mock Diagnostics Engine -->
         <div class="glass p-6 rounded-2xl border-l-4 border-cyan-500">
             <div class="flex items-center gap-3 mb-2">
                 <i data-lucide="sparkles" class="text-cyan-400 w-6 h-6 animate-spin"></i>
@@ -216,128 +309,11 @@
         </div>
     </div>
 
-    <!-- JavaScript Application Logic -->
-    <script>
-        // Default Core NEET Structure
-        const defaultData = {
-            Biology: [
-                { id: "b1", name: "Cell: The Unit of Life", topics: [{ name: "Cell Theory & Structure", done: false }, { name: "Organelles", done: false }, { name: "Mitosis & Meiosis", done: false }] },
-                { id: "b2", name: "Human Physiology", topics: [{ name: "Breathing & Exchange of Gases", done: false }, { name: "Body Fluids & Circulation", done: false }, { name: "Neural Control", done: false }] }
-            ],
-            Chemistry: [
-                { id: "c1", name: "Some Basic Concepts of Chemistry", topics: [{ name: "Mole Concept", done: false }, { name: "Stoichiometry", done: false }] },
-                { id: "c2", name: "Organic Chemistry: Basic Principles", topics: [{ name: "IUPAC Nomenclature", done: false }, { name: "Inductive & Resonance Effects", done: false }] }
-            ],
-            Physics: [
-                { id: "p1", name: "Units and Measurements", topics: [{ name: "Dimensional Analysis", done: false }, { name: "Errors in Measurement", done: false }] },
-                { id: "p2", name: "Electrostatics", topics: [{ name: "Coulomb's Law", done: false }, { name: "Electric Potential & Capacitance", done: false }] }
-            ]
-        };
-
-        // State Management
-        let appData = JSON.parse(localStorage.getItem('neet_tracker_data')) || defaultData;
-        let mockData = JSON.parse(localStorage.getItem('neet_tracker_mocks')) || [];
-        let currentTab = 'Biology';
-        let chartInstance = null;
-
-        // Initialize App
-        document.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-            renderChapters();
-            updateCalculations();
-            initChart();
-            runAIDiagnostics();
-        });
-
-        // Tab Switcher
-        function switchTab(subject) {
-            currentTab = subject;
-            ['Bio', 'Chem', 'Phy'].forEach(s => {
-                const btn = document.getElementById(`tab${s}`);
-                btn.className = "px-5 py-2 rounded-xl text-xs font-bold transition text-slate-400 hover:bg-slate-800";
-            });
-            
-            const activeMap = { Biology: 'tabBio', Chemistry: 'tabChem', Physics: 'tabPhy' };
-            const activeColor = { Biology: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40', Chemistry: 'bg-blue-500/20 text-blue-300 border-blue-500/40', Physics: 'bg-amber-500/20 text-amber-300 border-amber-500/40' };
-            
-            const activeBtn = document.getElementById(activeMap[subject]);
-            activeBtn.className = `px-5 py-2 rounded-xl text-xs font-bold transition border ${activeColor[subject]}`;
-
-            renderChapters();
-        }
-
-        // Render Syllabus Accordions
-        function renderChapters() {
-            const container = document.getElementById('chaptersContainer');
-            container.innerHTML = '';
-
-            const list = appData[currentTab] || [];
-            if (list.length === 0) {
-                container.innerHTML = `<div class="text-center py-8 text-xs text-slate-500">No chapters added yet. Click "Add Custom Chapter" to begin!</div>`;
-                return;
-            }
-
-            list.forEach((ch, chIdx) => {
-                const total = ch.topics.length;
-                const completed = ch.topics.filter(t => t.done).length;
-                const perc = total > 0 ? Math.round((completed / total) * 100) : 0;
-
-                const card = document.createElement('div');
-                card.className = "bg-slate-900/60 border border-slate-800 rounded-xl p-4";
-                
-                let topicsHTML = ch.topics.map((top, topIdx) => `
-                    <div class="flex items-center justify-between py-1.5 border-b border-slate-800/40 last:border-none">
-                        <label class="flex items-center gap-3 cursor-pointer text-xs text-slate-300 hover:text-white">
-                            <input type="checkbox" ${top.done ? 'checked' : ''} onchange="toggleTopic('${currentTab}', ${chIdx}, ${topIdx})" class="w-4 h-4 rounded border-slate-700 bg-slate-950 text-emerald-500 focus:ring-0 focus:ring-offset-0">
-                            <span class="${top.done ? 'line-through text-slate-500' : ''}">${top.name}</span>
-                        </label>
-                    </div>
-                `).join('');
-
-                card.innerHTML = `
-                    <div class="flex justify-between items-center mb-3">
-                        <div class="flex items-center gap-3">
-                            <h4 class="font-bold text-sm text-slate-200">${ch.name}</h4>
-                            <span class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-400">${completed}/${total} Done</span>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <span class="text-xs font-bold text-emerald-400">${perc}%</span>
-                            <button onclick="deleteChapter('${currentTab}', ${chIdx})" class="text-slate-600 hover:text-red-400 transition"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-                        </div>
-                    </div>
-                    <div class="w-full bg-slate-800 h-1.5 rounded-full mb-3 overflow-hidden">
-                        <div class="bg-emerald-500 h-full" style="width: ${perc}%"></div>
-                    </div>
-                    <div class="pl-2 space-y-1">
-                        ${topicsHTML}
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-            lucide.createIcons();
-        }
-
-        // Toggle Topic Completion
-        function toggleTopic(subject, chIdx, topIdx) {
-            appData[subject][chIdx].topics[topIdx].done = !appData[subject][chIdx].topics[topIdx].done;
-            saveData();
-            renderChapters();
-            updateCalculations();
-        }
-
-        // Add Custom Chapter
-        function toggleAddChapterModal() {
-            const modal = document.getElementById('addModal');
-            modal.classList.toggle('hidden');
-        }
-
-        function saveCustomChapter() {
-            const sub = document.getElementById('modalSubject').value;
-            const name = document.getElementById('modalChapterName').value.trim();
-            const topicsRaw = document.getElementById('modalTopics').value.trim();
-
-            if (!name || !topicsRaw) return alert('Please enter both chapter name and topics!');
-
-            const topics = topicsRaw.split(',').map(t => ({ name: t.trim(), done: false })).filter(t => t.name.length > 0);
-
-            if (!appData
+    <!-- Modal for Adding Timetable Slot -->
+    <div id="scheduleModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4">
+        <div class="glass max-w-md w-full p-6 rounded-2xl space-y-4">
+            <div class="flex justify-between items-center">
+                <h3 class="text-md font-bold text-white">Add Schedule Time Block</h3>
+                <button onclick="toggleScheduleModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+ 
